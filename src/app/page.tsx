@@ -35,12 +35,12 @@ export default function Home() {
                         />
                         
                         <div className="flex flex-col items-center mt-8">
-                            <div className="h-8 w-px bg-border/80" />
+                            <div className="h-8 w-px bg-border/50" />
                             <div className="flex justify-center gap-4 relative flex-wrap">
-                                <div className="absolute top-0 h-px w-full bg-border/80" />
+                                <div className="absolute top-0 h-px w-full bg-border/50" />
                                 {orgChartData.children?.map((lead: Member) => (
                                     <div key={lead.id} className="flex flex-col items-center relative px-2 pt-8">
-                                        <div className="absolute top-0 h-8 w-px bg-border/80" />
+                                        <div className="absolute top-0 h-8 w-px bg-border/50" />
                                         <OrgNode 
                                             member={lead}
                                             onToggle={handleToggle}
@@ -53,12 +53,12 @@ export default function Home() {
 
                         {expandedLead && expandedLead.children && (
                              <div className="flex flex-col items-center mt-8">
-                                <div className="h-8 w-px bg-border/80" />
+                                <div className="h-8 w-px bg-border/50" />
                                 <div className="flex justify-center gap-4 relative flex-wrap">
-                                    <div className="absolute top-0 h-px w-full bg-border/80" />
+                                    <div className="absolute top-0 h-px w-full bg-border/50" />
                                     {expandedLead.children.map((child: Member) => (
                                         <div key={child.id} className="flex flex-col items-center relative px-2 pt-8">
-                                            <div className="absolute top-0 h-8 w-px bg-border/80" />
+                                            <div className="absolute top-0 h-8 w-px bg-border/50" />
                                             <OrgNode member={child} />
                                         </div>
                                     ))}
