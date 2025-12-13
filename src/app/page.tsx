@@ -18,8 +18,8 @@ export default function Home() {
               </CardHeader>
               <CardContent className="p-4 sm:p-6 -mt-4">
                 <div className="overflow-x-auto">
-                    <div className="min-w-[500px] py-4">
-                        <OrgNode member={orgChartData} />
+                    <div className="min-w-[800px] py-4">
+                        <OrgNode member={orgChartData} isRoot />
                     </div>
                 </div>
               </CardContent>

@@ -2,7 +2,7 @@ import { Member } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { User, Crown, Star, Building2, Calendar, ChevronDown, ChevronRight } from 'lucide-react';
+import { User, Crown, Star, Building2, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 
 type MemberCardProps = {
   member: Member;
@@ -28,23 +28,23 @@ export default function MemberCard({ member, isExpanded, isCollapsible }: Member
   return (
     <div
       className={cn(
-        'flex items-center space-x-4 w-full p-3 rounded-lg transition-colors group',
+        'flex flex-col items-center w-64 p-4 rounded-lg transition-colors group border bg-card text-card-foreground shadow-sm',
         isCollapsible ? 'hover:bg-accent/20 cursor-pointer' : 'cursor-default'
       )}
     >
-      <Avatar className="h-12 w-12 border">
+      <Avatar className="h-16 w-16 border-2 border-primary/20">
         <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint="person portrait" />
         <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
       </Avatar>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-3">
-          <p className="font-semibold text-foreground truncate">{member.name}</p>
-          <Badge className={cn("whitespace-nowrap", roleColors[member.role])}>
+      <div className="text-center mt-3">
+        <p className="font-semibold text-lg text-foreground truncate">{member.name}</p>
+        <div className="flex items-center justify-center gap-2 mt-1.5">
+          <Badge className={cn("whitespace-nowrap text-xs", roleColors[member.role])}>
             <RoleIcon className="w-3.5 h-3.5 mr-1.5" />
             {member.role}
           </Badge>
         </div>
-        <div className="flex items-center flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mt-1.5">
+        <div className="text-sm text-muted-foreground mt-2 flex flex-col items-center gap-1">
           <span className="flex items-center gap-1.5">
             <Building2 className="w-3.5 h-3.5" />
             {member.department}
@@ -56,11 +56,11 @@ export default function MemberCard({ member, isExpanded, isCollapsible }: Member
         </div>
       </div>
       {isCollapsible && (
-        <div className="text-muted-foreground transition-transform duration-200 group-hover:text-accent-foreground" >
+        <div className="text-muted-foreground transition-transform duration-200 group-hover:text-accent-foreground mt-3" >
           {isExpanded ? (
-            <ChevronDown className="w-5 h-5" />
+            <ChevronUp className="w-5 h-5" />
           ) : (
-            <ChevronRight className="w-5 h-5" />
+            <ChevronDown className="w-5 h-5" />
           )}
         </div>
       )}

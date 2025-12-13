@@ -8,27 +8,42 @@ import { cn } from '@/lib/utils';
 
 type OrgNodeProps = {
   member: Member;
+  isRoot?: boolean;
 };
 
-export default function OrgNode({ member }: OrgNodeProps) {
+export default function OrgNode({ member, isRoot = false }: OrgNodeProps) {
   const hasChildren = member.children && member.children.length > 0;
-  // Expand Coordinator and Leads by default
   const [isExpanded, setIsExpanded] = useState(member.role !== 'Member');
+
+  if (isRoot) {
+    return (
+      <div className="flex flex-col items-center">
+        <OrgNode member={member} isRoot={false} />
+      </div>
+    );
+  }
 
   return (
     <Collapsible open={isExpanded} onOpenChange={setIsExpanded} disabled={!hasChildren}>
-      <CollapsibleTrigger asChild className={cn(hasChildren ? 'cursor-pointer' : 'cursor-default', 'w-full')}>
-        <div className="w-full">
+      <div className="flex flex-col items-center">
+        <CollapsibleTrigger asChild className={cn(hasChildren ? 'cursor-pointer' : 'cursor-default', 'w-auto')}>
+          <div className="flex justify-center">
             <MemberCard member={member} isExpanded={isExpanded} isCollapsible={hasChildren} />
-        </div>
-      </CollapsibleTrigger>
+          </div>
+        </CollapsibleTrigger>
+      </div>
 
       {hasChildren && (
         <CollapsibleContent>
-          <div className="relative pl-12 pt-4 space-y-4 
-                          before:content-[''] before:absolute before:left-[22px] before:top-0 before:h-full before:w-px before:bg-border/80">
-            {member.children?.map((child) => (
-              <div key={child.id} className="relative before:content-[''] before:absolute before:left-[-26px] before:top-[2.1rem] before:h-px before:w-6 before:bg-border/80">
+          {/* This is the vertical line coming from the parent */}
+          <div className="h-8 w-px bg-border/80 mx-auto" />
+          <div className="flex justify-center gap-4 relative">
+            {/* This is the horizontal line connecting the children */}
+            <div className="absolute top-0 h-px w-full bg-border/80" />
+            {member.children?.map((child, index) => (
+              <div key={child.id} className="flex flex-col items-center relative px-2">
+                 {/* This is the vertical line going up to the horizontal connector */}
+                <div className="absolute top-0 h-8 w-px bg-border/80" />
                 <OrgNode member={child} />
               </div>
             ))}
