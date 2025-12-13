@@ -12,7 +12,7 @@ type MemberCardProps = {
   onToggle?: (id: string) => void;
 };
 
-const roleIcons: Record<Member['role'], React.ElementType> = {
+const roleIcons: Record<string, React.ElementType> = {
   Coordinator: Crown,
   Lead: Star,
   Member: User,
@@ -27,7 +27,7 @@ const roleColors: Record<Member['role'], string> = {
 export default function MemberCard({ member, isExpanded, onToggle }: MemberCardProps) {
   const RoleIcon = roleIcons[member.role] || User;
   const hasChildren = member.children && member.children.length > 0;
-  const isLead = member.role === 'Lead';
+  const isLead = member.children && member.children.length > 0;
 
   return (
     <div
@@ -60,17 +60,13 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
           "text-sm text-muted-foreground group-hover:text-black/80 mt-3 flex flex-col items-center gap-1.5",
           { 'text-black/80': isExpanded }
         )}>
-          <span className="flex items-center gap-1.5">
-            <Building2 className="w-3.5 h-3.5" />
-            {member.department}
+           <span className="flex items-center gap-1.5">
+            <User className="w-3.5 h-3.5" />
+            {member.role}
           </span>
           <span className="flex items-center gap-1.5">
             <GraduationCap className="w-3.5 h-3.5" />
-            {member.collegeYear}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <RoleIcon className="w-3.5 h-3.5" />
-            {member.role}
+            {member.department} {member.collegeYear}
           </span>
         </div>
       </div>
@@ -80,9 +76,9 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
                 variant="secondary" 
                 size="sm" 
                 className={cn(
-                  "w-full bg-slate-700/50 text-slate-300 hover:bg-slate-600/50 hover:text-white",
-                  'group-hover:bg-card/80 group-hover:text-card-foreground',
-                  { 'bg-card/80 text-card-foreground': isExpanded }
+                  'w-full bg-slate-200/20 text-slate-200 hover:bg-slate-200/30 hover:text-white',
+                  'group-hover:bg-white/20 group-hover:text-white',
+                  { 'bg-white/20 text-white': isExpanded }
                 )}
                 onClick={() => onToggle(member.id)}
             >
