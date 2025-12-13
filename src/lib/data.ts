@@ -16,7 +16,7 @@ export const orgChartData: Member = {
   role: 'Coordinator',
   department: 'Executive',
   collegeYear: 'IV',
-  year: 2018,
+  year: 2020,
   imageUrl: 'https://picsum.photos/seed/1/100/100',
   skills: ['Leadership', 'Strategic Planning', 'Project Management'],
   children: [
@@ -32,7 +32,7 @@ export const orgChartData: Member = {
       children: [
         { id: '3', name: 'Casey Dyer', role: 'Frontend Developer', department: 'AI & DS', collegeYear: 'II', year: 2022, imageUrl: 'https://picsum.photos/seed/3/100/100', skills: ['Frontend', 'TypeScript'] },
         { id: '4', name: 'Drew Evans', role: 'Backend Developer', department: 'AI & DS', collegeYear: 'I', year: 2023, imageUrl: 'https://picsum.photos/seed/4/100/100', skills: ['Backend', 'Go'] },
-        { id: '5', name: 'Eli Fisher', role: 'DevOps Engineer', department: 'AI & DS', collegeYear: 'II', year: 2022, imageUrl: 'https://picsum.photos/seed/5/100/100', skills: ['DevOps', 'AWS'] },
+        { id: '5', name: 'Eli Fisher', role: 'DevOps Engineer', department: 'AI & DS', collegeYear: 'III', year: 2021, imageUrl: 'https://picsum.photos/seed/5/100/100', skills: ['DevOps', 'AWS'] },
       ],
     },
     {
@@ -41,7 +41,7 @@ export const orgChartData: Member = {
       role: 'UI/UX Lead',
       department: 'AI & DS',
       collegeYear: 'IV',
-      year: 2019,
+      year: 2020,
       imageUrl: 'https://picsum.photos/seed/6/100/100',
       skills: ['UI/UX', 'Figma', 'User Research'],
       children: [
