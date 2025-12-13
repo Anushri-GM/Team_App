@@ -2,12 +2,10 @@ import { Member } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { User, Crown, Star, Building2, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
+import { User, Crown, Star, Building2, Calendar } from 'lucide-react';
 
 type MemberCardProps = {
   member: Member;
-  isExpanded?: boolean;
-  isCollapsible: boolean;
 };
 
 const roleIcons: Record<Member['role'], React.ElementType> = {
@@ -22,14 +20,13 @@ const roleColors: Record<Member['role'], string> = {
     Member: "bg-gray-500/10 text-gray-700 border-gray-500/20"
 }
 
-export default function MemberCard({ member, isExpanded, isCollapsible }: MemberCardProps) {
+export default function MemberCard({ member }: MemberCardProps) {
   const RoleIcon = roleIcons[member.role] || User;
 
   return (
     <div
       className={cn(
-        'flex flex-col items-center w-64 p-4 rounded-lg transition-colors group border bg-card text-card-foreground shadow-sm',
-        isCollapsible ? 'hover:bg-accent/20 cursor-pointer' : 'cursor-default'
+        'flex flex-col items-center w-64 p-4 rounded-lg border bg-card text-card-foreground shadow-sm cursor-default'
       )}
     >
       <Avatar className="h-16 w-16 border-2 border-primary/20">
@@ -55,15 +52,6 @@ export default function MemberCard({ member, isExpanded, isCollapsible }: Member
           </span>
         </div>
       </div>
-      {isCollapsible && (
-        <div className="text-muted-foreground transition-transform duration-200 group-hover:text-accent-foreground mt-3" >
-          {isExpanded ? (
-            <ChevronUp className="w-5 h-5" />
-          ) : (
-            <ChevronDown className="w-5 h-5" />
-          )}
-        </div>
-      )}
     </div>
   );
 }

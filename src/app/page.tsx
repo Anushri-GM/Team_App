@@ -13,12 +13,12 @@ export default function Home() {
               <CardHeader>
                 <CardTitle>Organization Chart</CardTitle>
                 <CardDescription>
-                  A visual representation of the company's hierarchy. Click on a lead or coordinator to expand/collapse their team.
+                  A visual representation of the company's hierarchy.
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-4 sm:p-6 -mt-4">
                 <div className="overflow-x-auto">
-                    <div className="min-w-[800px] py-4">
+                    <div className="min-w-[1200px] py-4">
                         <OrgNode member={orgChartData} isRoot />
                     </div>
                 </div>
