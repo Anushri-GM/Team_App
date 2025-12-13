@@ -76,9 +76,9 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
                 variant="secondary" 
                 size="sm" 
                 className={cn(
-                  'w-full bg-slate-200/20 text-slate-200 hover:bg-slate-200/30 hover:text-white',
-                  'group-hover:bg-white/20 group-hover:text-white',
-                  { 'bg-white/20 text-white': isExpanded }
+                  'w-full bg-slate-200/20 text-slate-200 hover:bg-slate-200/50 hover:text-white',
+                  'group-hover:bg-white/30 group-hover:text-white',
+                  { 'bg-white/30 text-white': isExpanded }
                 )}
                 onClick={() => onToggle(member.id)}
             >
