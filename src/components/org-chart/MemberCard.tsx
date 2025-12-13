@@ -19,9 +19,9 @@ const roleIcons: Record<Member['role'], React.ElementType> = {
 };
 
 const roleColors: Record<Member['role'], string> = {
-    Coordinator: "bg-amber-500/10 text-amber-700 border-amber-500/20",
-    Lead: "bg-blue-500/10 text-blue-700 border-blue-500/20",
-    Member: "bg-gray-500/10 text-gray-700 border-gray-500/20"
+    Coordinator: "bg-amber-500/10 text-amber-500 border-amber-500/20 hover:bg-amber-500/20",
+    Lead: "bg-blue-500/10 text-blue-400 border-blue-500/20 hover:bg-blue-500/20",
+    Member: "bg-slate-500/10 text-slate-400 border-slate-500/20 hover:bg-slate-500/20"
 }
 
 export default function MemberCard({ member, isExpanded, onToggle }: MemberCardProps) {
@@ -32,27 +32,28 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
   return (
     <div
       className={cn(
-        'flex flex-col items-center w-64 p-4 rounded-lg border bg-card text-card-foreground shadow-sm'
+        'group flex flex-col items-center w-64 p-4 rounded-xl border bg-card text-card-foreground shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1'
       )}
     >
-      <div className="relative h-32 w-32 rounded-md overflow-hidden border-2 border-primary/20">
+      <div className="relative h-32 w-32 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-primary/50 transition-all duration-300">
           <Image 
               src={member.imageUrl} 
               alt={member.name} 
-              layout="fill"
-              objectFit="cover"
+              width={128}
+              height={128}
+              className="object-cover"
               data-ai-hint="person portrait" 
           />
       </div>
-      <div className="text-center mt-3">
+      <div className="text-center mt-4">
         <p className="font-semibold text-lg text-foreground truncate">{member.name}</p>
         <div className="flex items-center justify-center gap-2 mt-1.5">
-          <Badge className={cn("whitespace-nowrap text-xs", roleColors[member.role])}>
+          <Badge className={cn("whitespace-nowrap text-xs font-medium", roleColors[member.role])}>
             <RoleIcon className="w-3.5 h-3.5 mr-1.5" />
             {member.role}
           </Badge>
         </div>
-        <div className="text-sm text-muted-foreground mt-2 flex flex-col items-center gap-1">
+        <div className="text-sm text-muted-foreground mt-3 flex flex-col items-center gap-1.5">
           <span className="flex items-center gap-1.5">
             <Building2 className="w-3.5 h-3.5" />
             {member.department}
@@ -65,7 +66,7 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
       </div>
       {isLead && hasChildren && onToggle && (
         <div className="mt-4 w-full">
-            <Button variant="outline" size="sm" className="w-full" onClick={() => onToggle(member.id)}>
+            <Button variant="outline" size="sm" className="w-full bg-card hover:bg-primary/10" onClick={() => onToggle(member.id)}>
                 {isExpanded ? (
                     <>
                         <ChevronsUp className="mr-2 h-4 w-4" />
