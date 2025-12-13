@@ -2,10 +2,13 @@ import { Member } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { User, Crown, Star, Building2, Calendar } from 'lucide-react';
+import { User, Crown, Star, Building2, Calendar, Users, ChevronsDown, ChevronsUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 type MemberCardProps = {
   member: Member;
+  isExpanded: boolean;
+  onToggle?: (id: string) => void;
 };
 
 const roleIcons: Record<Member['role'], React.ElementType> = {
@@ -20,13 +23,15 @@ const roleColors: Record<Member['role'], string> = {
     Member: "bg-gray-500/10 text-gray-700 border-gray-500/20"
 }
 
-export default function MemberCard({ member }: MemberCardProps) {
+export default function MemberCard({ member, isExpanded, onToggle }: MemberCardProps) {
   const RoleIcon = roleIcons[member.role] || User;
+  const hasChildren = member.children && member.children.length > 0;
+  const isLead = member.role === 'Lead';
 
   return (
     <div
       className={cn(
-        'flex flex-col items-center w-64 p-4 rounded-lg border bg-card text-card-foreground shadow-sm cursor-default'
+        'flex flex-col items-center w-64 p-4 rounded-lg border bg-card text-card-foreground shadow-sm'
       )}
     >
       <Avatar className="h-16 w-16 border-2 border-primary/20">
@@ -52,6 +57,23 @@ export default function MemberCard({ member }: MemberCardProps) {
           </span>
         </div>
       </div>
+      {isLead && hasChildren && onToggle && (
+        <div className="mt-4 w-full">
+            <Button variant="outline" size="sm" className="w-full" onClick={() => onToggle(member.id)}>
+                {isExpanded ? (
+                    <>
+                        <ChevronsUp className="mr-2 h-4 w-4" />
+                        Hide Members
+                    </>
+                ) : (
+                    <>
+                        <ChevronsDown className="mr-2 h-4 w-4" />
+                        View Members
+                    </>
+                )}
+            </Button>
+        </div>
+      )}
     </div>
   );
 }

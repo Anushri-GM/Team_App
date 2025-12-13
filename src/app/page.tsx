@@ -1,9 +1,17 @@
+'use client';
+import { useState } from 'react';
 import Header from '@/components/Header';
 import OrgNode from '@/components/org-chart/OrgNode';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { orgChartData } from '@/lib/data';
 
 export default function Home() {
+  const [expandedLeadId, setExpandedLeadId] = useState<string | null>(null);
+
+  const handleToggle = (leadId: string) => {
+    setExpandedLeadId(prevId => (prevId === leadId ? null : leadId));
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -19,7 +27,12 @@ export default function Home() {
               <CardContent className="p-4 sm:p-6 -mt-4">
                 <div className="overflow-x-auto">
                     <div className="min-w-[1200px] py-4">
-                        <OrgNode member={orgChartData} isRoot />
+                        <OrgNode 
+                            member={orgChartData} 
+                            isRoot 
+                            expandedLeadId={expandedLeadId}
+                            onToggle={handleToggle}
+                        />
                     </div>
                 </div>
               </CardContent>
