@@ -32,15 +32,15 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
   return (
     <div
       className={cn(
-        'group flex flex-col items-center w-64 p-4 rounded-xl border bg-card text-card-foreground shadow-lg transition-all duration-300 hover:shadow-accent/30 hover:shadow-2xl hover:-translate-y-1'
+        'group flex flex-col items-center w-64 p-4 rounded-xl border bg-card text-card-foreground shadow-lg transition-all duration-300 hover:bg-accent/10 hover:border-accent/30 hover:shadow-accent/20 hover:shadow-2xl hover:-translate-y-1'
       )}
     >
-      <div className="relative h-32 w-32 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-accent/50 transition-all duration-300">
+      <div className="relative h-40 w-40 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-accent/50 transition-all duration-300">
           <Image 
               src={member.imageUrl} 
               alt={member.name} 
-              width={128}
-              height={128}
+              width={160}
+              height={160}
               className="object-cover"
               data-ai-hint="person portrait" 
           />
