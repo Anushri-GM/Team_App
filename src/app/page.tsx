@@ -14,7 +14,7 @@ export default function Home() {
   const expandedLead = orgChartData.children?.find(child => child.id === expandedLeadId);
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-black">
       <Header />
       <main className="flex-1 container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="w-full">
@@ -30,12 +30,12 @@ export default function Home() {
                     />
                     
                     <div className="flex flex-col items-center mt-8">
-                        <div className="h-8 w-px bg-border/50" />
+                        <div className="h-8 w-px bg-slate-700" />
                         <div className="flex justify-center gap-4 relative flex-wrap">
-                            <div className="absolute top-0 h-px w-full bg-border/50" />
+                            <div className="absolute top-0 h-px w-full bg-slate-700" />
                             {orgChartData.children?.map((lead: Member) => (
                                 <div key={lead.id} className="flex flex-col items-center relative px-2 pt-8">
-                                    <div className="absolute top-0 h-8 w-px bg-border/50" />
+                                    <div className="absolute top-0 h-8 w-px bg-slate-700" />
                                     <OrgNode 
                                         member={lead}
                                         onToggle={handleToggle}
@@ -48,12 +48,12 @@ export default function Home() {
 
                     {expandedLead && expandedLead.children && (
                          <div className="flex flex-col items-center mt-8">
-                            <div className="h-8 w-px bg-border/50" />
+                            <div className="h-8 w-px bg-slate-700" />
                             <div className="flex justify-center gap-4 relative flex-wrap">
-                                <div className="absolute top-0 h-px w-full bg-border/50" />
+                                <div className="absolute top-0 h-px w-full bg-slate-700" />
                                 {expandedLead.children.map((child: Member) => (
                                     <div key={child.id} className="flex flex-col items-center relative px-2 pt-8">
-                                        <div className="absolute top-0 h-8 w-px bg-border/50" />
+                                        <div className="absolute top-0 h-8 w-px bg-slate-700" />
                                         <OrgNode member={child} />
                                     </div>
                                 ))}
