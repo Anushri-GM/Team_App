@@ -1,9 +1,10 @@
+'use client';
 import { Member } from '@/lib/data';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { User, Crown, Star, Building2, Calendar, Users, ChevronsDown, ChevronsUp } from 'lucide-react';
+import { User, Crown, Star, Building2, Calendar, ChevronsDown, ChevronsUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 type MemberCardProps = {
   member: Member;
@@ -34,10 +35,15 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
         'flex flex-col items-center w-64 p-4 rounded-lg border bg-card text-card-foreground shadow-sm'
       )}
     >
-      <Avatar className="h-16 w-16 border-2 border-primary/20">
-        <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint="person portrait" />
-        <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-      </Avatar>
+      <div className="relative h-24 w-24 rounded-md overflow-hidden border-2 border-primary/20">
+          <Image 
+              src={member.imageUrl} 
+              alt={member.name} 
+              layout="fill"
+              objectFit="cover"
+              data-ai-hint="person portrait" 
+          />
+      </div>
       <div className="text-center mt-3">
         <p className="font-semibold text-lg text-foreground truncate">{member.name}</p>
         <div className="flex items-center justify-center gap-2 mt-1.5">
