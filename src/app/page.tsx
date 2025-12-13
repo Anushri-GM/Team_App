@@ -52,6 +52,9 @@ export default function Home() {
                     {expandedLead && expandedLead.children && (
                          <div className="flex flex-col items-center mt-8">
                             <div className="h-8 w-px bg-slate-200" />
+                            <div className="text-center my-4">
+                              <h2 className="text-2xl font-semibold text-foreground">Development Members</h2>
+                            </div>
                             <div className="flex justify-center gap-4 relative flex-wrap">
                                 <div className="absolute top-0 h-px w-full bg-slate-200" />
                                 {expandedLead.children.map((child: Member) => (
