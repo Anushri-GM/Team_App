@@ -2,7 +2,7 @@
 import { Member } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { User, Crown, Star, Building2, Calendar, ChevronsDown, ChevronsUp } from 'lucide-react';
+import { User, Crown, Star, Building2, Calendar, ChevronsDown, ChevronsUp, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
@@ -56,18 +56,6 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
         )}>
           {member.name}
         </p>
-        {member.role !== 'Lead' && member.role !== 'Member' && (
-          <div className="flex items-center justify-center gap-2 mt-1.5">
-            <Badge className={cn(
-              "whitespace-nowrap text-xs font-medium", roleColors[member.role], 
-              'group-hover:border-black/20 group-hover:bg-black/10 group-hover:text-black',
-              { 'border-black/20 bg-black/10 text-black': isExpanded }
-            )}>
-              <RoleIcon className="w-3.5 h-3.5 mr-1.5" />
-              {member.role}
-            </Badge>
-          </div>
-        )}
         <div className={cn(
           "text-sm text-muted-foreground group-hover:text-black/80 mt-3 flex flex-col items-center gap-1.5",
           { 'text-black/80': isExpanded }
@@ -77,8 +65,12 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
             {member.department}
           </span>
           <span className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5" />
-            Joined {member.year}
+            <GraduationCap className="w-3.5 h-3.5" />
+            {member.collegeYear}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <RoleIcon className="w-3.5 h-3.5" />
+            {member.role}
           </span>
         </div>
       </div>
