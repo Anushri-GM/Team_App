@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Org Chart Pro',
+  title: 'Team Members',
   description: 'Visualize and optimize your team structure.',
 };
 

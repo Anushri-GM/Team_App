@@ -9,7 +9,7 @@ export default function Header() {
           <div className="bg-primary/10 text-primary p-2 rounded-lg">
             <Users2 className="h-6 w-6" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground tracking-tight">Org Chart Pro</h1>
+          <h1 className="text-2xl font-bold text-foreground tracking-tight">Team Members</h1>
         </div>
       </div>
     </header>
