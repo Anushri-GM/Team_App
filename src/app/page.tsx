@@ -19,7 +19,7 @@ export default function Home() {
       <Header />
       <main className="flex-1 container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="w-full">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden bg-card/50">
               <CardHeader>
                 <CardTitle>Organization Chart</CardTitle>
                 <CardDescription>
