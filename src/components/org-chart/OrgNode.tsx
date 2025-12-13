@@ -7,17 +7,19 @@ type OrgNodeProps = {
   isRoot?: boolean;
   expandedLeadId?: string | null;
   onToggle?: (id: string) => void;
+  showChildren?: boolean;
 };
 
-export default function OrgNode({ member, isRoot = false, expandedLeadId, onToggle }: OrgNodeProps) {
+export default function OrgNode({ member, isRoot = false, expandedLeadId, onToggle, showChildren = true }: OrgNodeProps) {
   const isExpanded = expandedLeadId === member.id;
   const hasChildren = member.children && member.children.length > 0;
-  const showChildren = (member.role !== 'Lead' && hasChildren) || (member.role === 'Lead' && isExpanded);
+  
+  const shouldShowChildren = showChildren && ((member.role !== 'Lead' && hasChildren) || (member.role === 'Lead' && isExpanded));
 
   if (isRoot) {
     return (
       <div className="flex flex-col items-center">
-        <OrgNode member={member} isRoot={false} expandedLeadId={expandedLeadId} onToggle={onToggle} />
+        <OrgNode member={member} isRoot={false} expandedLeadId={expandedLeadId} onToggle={onToggle} showChildren={showChildren} />
       </div>
     );
   }
@@ -28,7 +30,7 @@ export default function OrgNode({ member, isRoot = false, expandedLeadId, onTogg
         <MemberCard member={member} isExpanded={isExpanded} onToggle={onToggle} />
       </div>
 
-      {showChildren && (
+      {shouldShowChildren && (
         <>
           {/* This is the vertical line coming from the parent */}
           <div className="h-8 w-px bg-border/80 mx-auto" />
@@ -39,7 +41,7 @@ export default function OrgNode({ member, isRoot = false, expandedLeadId, onTogg
               <div key={child.id} className="flex flex-col items-center relative px-2 pt-8">
                  {/* This is the vertical line going up to the horizontal connector */}
                 <div className="absolute top-0 h-8 w-px bg-border/80" />
-                <OrgNode member={child} expandedLeadId={expandedLeadId} onToggle={onToggle} />
+                <OrgNode member={child} expandedLeadId={expandedLeadId} onToggle={onToggle} showChildren={showChildren} />
               </div>
             ))}
           </div>
