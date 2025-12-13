@@ -32,8 +32,11 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
   return (
     <div
       className={cn(
-        'group flex flex-col items-center w-64 p-4 rounded-xl border bg-card text-card-foreground shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1',
-        'hover:bg-gradient-to-r hover:from-[#a09489] hover:to-[#c3b9b1]'
+        'group flex flex-col items-center w-64 p-4 rounded-xl border bg-card text-card-foreground shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_5px_#fde0d5]',
+        'hover:bg-gradient-to-r hover:from-[#a09489] hover:to-[#c3b9b1]',
+        {
+          'shadow-[0_0_20px_5px_#fde0d5] bg-gradient-to-r from-[#a09489] to-[#c3b9b1]': isExpanded,
+        }
       )}
     >
       <div className="relative h-40 w-40 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-white/50 transition-all duration-300">
@@ -47,16 +50,28 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
           />
       </div>
       <div className="text-center mt-4">
-        <p className="font-semibold text-lg text-foreground group-hover:text-card-foreground truncate">{member.name}</p>
+        <p className={cn(
+          "font-semibold text-lg text-foreground group-hover:text-black truncate",
+          { 'text-black': isExpanded }
+        )}>
+          {member.name}
+        </p>
         {member.role !== 'Lead' && (
           <div className="flex items-center justify-center gap-2 mt-1.5">
-            <Badge className={cn("whitespace-nowrap text-xs font-medium", roleColors[member.role], 'group-hover:border-card-foreground/20 group-hover:bg-card-foreground/10 group-hover:text-card-foreground')}>
+            <Badge className={cn(
+              "whitespace-nowrap text-xs font-medium", roleColors[member.role], 
+              'group-hover:border-black/20 group-hover:bg-black/10 group-hover:text-black',
+              { 'border-black/20 bg-black/10 text-black': isExpanded }
+            )}>
               <RoleIcon className="w-3.5 h-3.5 mr-1.5" />
               {member.role}
             </Badge>
           </div>
         )}
-        <div className="text-sm text-muted-foreground group-hover:text-card-foreground/80 mt-3 flex flex-col items-center gap-1.5">
+        <div className={cn(
+          "text-sm text-muted-foreground group-hover:text-black/80 mt-3 flex flex-col items-center gap-1.5",
+          { 'text-black/80': isExpanded }
+        )}>
           <span className="flex items-center gap-1.5">
             <Building2 className="w-3.5 h-3.5" />
             {member.department}
@@ -69,7 +84,16 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
       </div>
       {isLead && hasChildren && onToggle && (
         <div className="mt-4 w-full">
-            <Button variant="secondary" size="sm" className="w-full bg-slate-700/50 text-slate-300 hover:bg-slate-600/50 hover:text-white group-hover:bg-card/80 group-hover:text-card-foreground" onClick={() => onToggle(member.id)}>
+            <Button 
+                variant="secondary" 
+                size="sm" 
+                className={cn(
+                  "w-full bg-slate-700/50 text-slate-300 hover:bg-slate-600/50 hover:text-white",
+                  'group-hover:bg-card/80 group-hover:text-card-foreground',
+                  { 'bg-card/80 text-card-foreground': isExpanded }
+                )}
+                onClick={() => onToggle(member.id)}
+            >
                 {isExpanded ? (
                     <>
                         <ChevronsUp className="mr-2 h-4 w-4" />
