@@ -19,8 +19,8 @@ export default function Home() {
       <main className="flex-1 container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="w-full">
             <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold text-foreground">Organization Chart</h1>
-                <p className="text-muted-foreground">A visual representation of the company's hierarchy.</p>
+                <h1 className="text-3xl font-bold text-foreground">Meet the Team</h1>
+                <p className="text-muted-foreground">Get to know the talented individuals who make up our team.</p>
             </div>
             <div className="overflow-x-auto">
                 <div className="min-w-[1200px] py-4">
