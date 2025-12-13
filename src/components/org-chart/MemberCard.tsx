@@ -35,7 +35,7 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
         'flex flex-col items-center w-64 p-4 rounded-lg border bg-card text-card-foreground shadow-sm'
       )}
     >
-      <div className="relative h-24 w-24 rounded-md overflow-hidden border-2 border-primary/20">
+      <div className="relative h-32 w-32 rounded-md overflow-hidden border-2 border-primary/20">
           <Image 
               src={member.imageUrl} 
               alt={member.name} 
