@@ -15,7 +15,7 @@ export const orgChartData: Member = {
   name: 'Alexina Jordan',
   role: 'Coordinator',
   department: 'Executive',
-  collegeYear: 'Graduate',
+  collegeYear: 'IV',
   year: 2018,
   imageUrl: 'https://picsum.photos/seed/1/100/100',
   skills: ['Leadership', 'Strategic Planning', 'Project Management'],
