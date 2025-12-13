@@ -64,7 +64,7 @@ export default function Home() {
   
   const sortedYears = useMemo(() => {
     return Object.keys(membersByYear).sort((a, b) => 
-      (collegeYearOrder[a as Member['collegeYear']] || 99) - (collegeYearOrder[b as Member['collegeYear']] || 99)
+      (collegeYearOrder[b as Member['collegeYear']] || 0) - (collegeYearOrder[a as Member['collegeYear']] || 0)
     );
   }, [membersByYear]);
 
