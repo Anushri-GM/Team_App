@@ -32,10 +32,25 @@ export default function Home() {
                         <OrgNode 
                             member={orgChartData} 
                             isRoot 
-                            expandedLeadId={expandedLeadId}
-                            onToggle={handleToggle}
-                            showChildren={false}
                         />
+                        
+                        <div className="flex flex-col items-center mt-8">
+                            <div className="h-8 w-px bg-border/80" />
+                            <div className="flex justify-center gap-4 relative flex-wrap">
+                                <div className="absolute top-0 h-px w-full bg-border/80" />
+                                {orgChartData.children?.map((lead: Member) => (
+                                    <div key={lead.id} className="flex flex-col items-center relative px-2 pt-8">
+                                        <div className="absolute top-0 h-8 w-px bg-border/80" />
+                                        <OrgNode 
+                                            member={lead}
+                                            onToggle={handleToggle}
+                                            expandedLeadId={expandedLeadId}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
                         {expandedLead && expandedLead.children && (
                              <div className="flex flex-col items-center mt-8">
                                 <div className="h-8 w-px bg-border/80" />
