@@ -19,7 +19,7 @@ export default function Header({ view, onViewChange }: HeaderProps) {
           <h1 className="text-2xl font-bold text-foreground tracking-tight">Team Members</h1>
         </div>
         <Button onClick={() => onViewChange(view === 'chart' ? 'grid' : 'chart')}>
-          {view === 'chart' ? 'View Entire Team' : 'View Org Chart'}
+          {view === 'chart' ? 'View Entire Team' : 'View hierarchy'}
         </Button>
       </div>
     </header>
