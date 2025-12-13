@@ -67,7 +67,7 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
       </div>
       {isLead && hasChildren && onToggle && (
         <div className="mt-4 w-full">
-            <Button variant="outline" size="sm" className="w-full bg-card group-hover:bg-transparent group-hover:border-card-foreground/50 group-hover:text-card-foreground" onClick={() => onToggle(member.id)}>
+            <Button variant="secondary" size="sm" className="w-full bg-slate-700/50 text-slate-300 hover:bg-slate-600/50 hover:text-white group-hover:bg-white/20 group-hover:text-white" onClick={() => onToggle(member.id)}>
                 {isExpanded ? (
                     <>
                         <ChevronsUp className="mr-2 h-4 w-4" />
