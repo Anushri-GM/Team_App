@@ -29,8 +29,7 @@ export default function Home() {
 
   const allMembers = useMemo(() => {
     const members = getAllMembers(orgChartData);
-    // Filter out the root coordinator from the grid view of all members
-    return members.filter(m => m.id !== '1').sort((a, b) => {
+    return members.sort((a, b) => {
         return (collegeYearOrder[a.collegeYear] || 99) - (collegeYearOrder[b.collegeYear] || 99);
     });
   }, []);
