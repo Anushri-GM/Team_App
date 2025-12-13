@@ -38,7 +38,7 @@ export default function Home() {
   const allMembers = useMemo(() => {
     const members = getAllMembers(orgChartData);
     return members.sort((a, b) => {
-        return (collegeYearOrder[a.collegeYear] || 99) - (collegeYearOrder[b.collegeYear] || 99);
+        return (collegeYearOrder[b.collegeYear] || 0) - (collegeYearOrder[a.collegeYear] || 0);
     });
   }, []);
 
