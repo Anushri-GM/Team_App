@@ -56,7 +56,7 @@ export default function MemberCard({ member, isExpanded, onToggle }: MemberCardP
         )}>
           {member.name}
         </p>
-        {member.role !== 'Lead' && (
+        {member.role !== 'Lead' && member.role !== 'Member' && (
           <div className="flex items-center justify-center gap-2 mt-1.5">
             <Badge className={cn(
               "whitespace-nowrap text-xs font-medium", roleColors[member.role], 
