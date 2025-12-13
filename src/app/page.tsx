@@ -30,12 +30,15 @@ export default function Home() {
                     />
                     
                     <div className="flex flex-col items-center mt-8">
-                        <div className="h-8 w-px bg-slate-700" />
+                        <div className="h-8 w-px bg-slate-200" />
+                        <div className="text-center my-4">
+                          <h2 className="text-2xl font-semibold text-foreground">Leads</h2>
+                        </div>
                         <div className="flex justify-center gap-4 relative flex-wrap">
-                            <div className="absolute top-0 h-px w-full bg-slate-700" />
+                            <div className="absolute top-0 h-px w-full bg-slate-200" />
                             {orgChartData.children?.map((lead: Member) => (
                                 <div key={lead.id} className="flex flex-col items-center relative px-2 pt-8">
-                                    <div className="absolute top-0 h-8 w-px bg-slate-700" />
+                                    <div className="absolute top-0 h-8 w-px bg-slate-200" />
                                     <OrgNode 
                                         member={lead}
                                         onToggle={handleToggle}
@@ -48,12 +51,12 @@ export default function Home() {
 
                     {expandedLead && expandedLead.children && (
                          <div className="flex flex-col items-center mt-8">
-                            <div className="h-8 w-px bg-slate-700" />
+                            <div className="h-8 w-px bg-slate-200" />
                             <div className="flex justify-center gap-4 relative flex-wrap">
-                                <div className="absolute top-0 h-px w-full bg-slate-700" />
+                                <div className="absolute top-0 h-px w-full bg-slate-200" />
                                 {expandedLead.children.map((child: Member) => (
                                     <div key={child.id} className="flex flex-col items-center relative px-2 pt-8">
-                                        <div className="absolute top-0 h-8 w-px bg-slate-700" />
+                                        <div className="absolute top-0 h-8 w-px bg-slate-200" />
                                         <OrgNode member={child} />
                                     </div>
                                 ))}
