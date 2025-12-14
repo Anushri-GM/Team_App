@@ -1,4 +1,3 @@
-'use client';
 import { useMemo } from 'react';
 import Header from '@/components/Header';
 import MemberCard from '@/components/org-chart/MemberCard';
@@ -40,7 +39,7 @@ export default function TeamPage() {
       'II': [],
       'I': [],
     };
-    
+
     allMembers.forEach(member => {
       if (grouped[member.collegeYear]) {
         grouped[member.collegeYear].push(member);
@@ -51,9 +50,9 @@ export default function TeamPage() {
         Object.entries(grouped).filter(([, members]) => members.length > 0)
     );
   }, [allMembers]);
-  
+
   const sortedYears = useMemo(() => {
-    return Object.keys(membersByYear).sort((a, b) => 
+    return Object.keys(membersByYear).sort((a, b) =>
       (collegeYearOrder[b as Member['collegeYear']] || 0) - (collegeYearOrder[a as Member['collegeYear']] || 0)
     );
   }, [membersByYear]);
@@ -64,13 +63,13 @@ export default function TeamPage() {
       <main className="flex-1 container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="w-full">
             <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold text-foreground">Our Team</h1>
+                <h1 className="text-3xl font-bold text-[#f2f2f2]">Our Team</h1>
                 <p className="text-muted-foreground">Everyone on the team, sorted by their college year.</p>
             </div>
             <div className="space-y-12">
               {sortedYears.map(year => (
                 <div key={year}>
-                  <h2 className="text-2xl font-bold text-foreground text-center mb-6">
+                  <h2 className="text-2xl font-bold text-[#f2f2f2] text-center mb-6">
                     {collegeYearHeadings[year as Member['collegeYear']]}
                   </h2>
                   <div className="flex justify-center flex-wrap gap-8">

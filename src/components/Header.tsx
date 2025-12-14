@@ -1,12 +1,11 @@
-'use client';
 import { Users2 } from 'lucide-react';
 import React from 'react';
 import { Button } from './ui/button';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
-  const pathname = usePathname();
+  const location = useLocation();
+  const pathname = location?.pathname || '/';
   const isChartPage = pathname === '/';
 
   return (
@@ -19,7 +18,7 @@ export default function Header() {
           <h1 className="text-2xl font-bold text-foreground tracking-tight">Team Members</h1>
         </div>
         <Button asChild>
-          <Link href={isChartPage ? "/team" : "/"}>
+          <Link to={isChartPage ? "/team" : "/"}>
             {isChartPage ? 'View Entire Team' : 'View hierarchy'}
           </Link>
         </Button>
